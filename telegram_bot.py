@@ -9,6 +9,11 @@ from telegram.ext import Application, CommandHandler, MessageHandler, filters, C
 from faq_database import get_response, is_exit_command, FAQ_DATA
 import json
 from datetime import datetime
+import os
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 # Enable logging
 logging.basicConfig(
@@ -22,20 +27,21 @@ conversation_logs = []
 
 class TelegramBotConfig:
     """Configuration for Telegram Bot"""
-    # Replace with your actual Telegram Bot Token from BotFather
-    TOKEN = "8535300318:AAH8QOFeo4xBpr6NBX1aqhsvzy4H2mBciII"
+    # Get token from environment variable or use placeholder
+    TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "8535300318:AAH8QOFeo4xBpr6NBX1aqhsvzy4H2mBciII")
     
     @staticmethod
     def validate_token():
-        if TelegramBotConfig.TOKEN == "YOUR_TELEGRAM_BOT_TOKEN_HERE":
+        if TelegramBotConfig.TOKEN == "YOUR_TELEGRAM_BOT_TOKEN_HERE" or not TelegramBotConfig.TOKEN:
             raise ValueError(
                 "❌ ERROR: No Telegram Bot Token provided!\n\n"
-                "To get your token:\n"
+                "To fix this:\n"
                 "1. Open Telegram and search for @BotFather\n"
                 "2. Send /newbot command\n"
                 "3. Follow the instructions\n"
                 "4. Copy your bot token\n"
-                "5. Replace 'YOUR_TELEGRAM_BOT_TOKEN_HERE' in telegram_bot.py (line 18)\n"
+                "5. Create a .env file in the project root\n"
+                "6. Add: TELEGRAM_BOT_TOKEN=your_token_here\n"
             )
 
 def log_conversation(user_id, user_message, bot_response):
