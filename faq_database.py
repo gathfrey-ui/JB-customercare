@@ -164,29 +164,6 @@ Need help? Contact us!
 📧 **Email:** **Wisdom9f@gmail.com**
 
 Our support team is ready to assist you 24/7! 🎯"""
-    },
-    "general_help": {
-        "keywords": ["other", "general", "issue"],
-        "response": """👋 **Welcome to Jagaban SMS!**
-
-How may I be of help?
-
-1️⃣ Site link
-2️⃣ Payment issue
-3️⃣ Registration issue
-4️⃣ Facebook issue
-5️⃣ TikTok issue
-6️⃣ Twitter issue
-7️⃣ Want to buy Facebook
-8️⃣ Want to buy TikTok
-9️⃣ Want to buy VPN
-🔟 Want to buy Instagram
-1️⃣1️⃣ Want to buy Twitter
-1️⃣2️⃣ Want to buy WhatsApp
-1️⃣3️⃣ Facebook 2FA issues
-1️⃣4️⃣ Support
-
-Just reply with the number or describe your issue!"""
     }
 }
 
@@ -207,8 +184,8 @@ def get_response(user_message):
             if keyword in normalized_message:
                 return data["response"]
     
-    # If no match found, return general help
-    return FAQ_DATA["general_help"]["response"]
+    # If no match found, return welcome message
+    return FAQ_DATA["welcome"]["response"]
 
 def is_exit_command(user_message):
     """Check if user wants to exit conversation."""
