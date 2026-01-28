@@ -5,33 +5,188 @@ Contains all FAQ responses and pattern matching for customer queries
 
 # FAQ Database with keywords and responses
 FAQ_DATA = {
+    "welcome": {
+        "keywords": ["hello", "hi", "start", "help", "howdy", "hey"],
+        "response": """👋 **Welcome to Jagaban SMS!**
+
+How may I be of help?
+
+1️⃣ Site link
+2️⃣ Payment issue
+3️⃣ Registration issue
+4️⃣ Facebook issue
+5️⃣ TikTok issue
+6️⃣ Twitter issue
+7️⃣ Want to buy Facebook
+8️⃣ Want to buy TikTok
+9️⃣ Want to buy VPN
+🔟 Want to buy Instagram
+1️⃣1️⃣ Want to buy Twitter
+1️⃣2️⃣ Want to buy WhatsApp
+1️⃣3️⃣ Facebook 2FA issues
+1️⃣4️⃣ Support
+
+Just reply with the number or describe your issue!"""
+    },
     "site_link": {
-        "keywords": ["site", "link", "website", "jagaban", "url", "web"],
-        "response": "🌐 **Site Information**\n\nYou can visit our website at: **https://jagaban.com**\n\nOur website provides:\n• Account management\n• Payment processing\n• Service information\n• Contact support\n• FAQ section\n\nIs there anything specific you'd like to know about our site?"
+        "keywords": ["site link", "site", "register", "website", "1"],
+        "response": """🌐 **Site Link**
+
+Kindly use the site and register 👉 **https://jagabansmsandlogs.com.ng/products**"""
     },
     "payment_issue": {
-        "keywords": ["payment", "pay", "billing", "charge", "credit", "debit", "card", "money", "transaction"],
-        "response": "💰 **Payment Support**\n\nWe're here to help with your payment issues!\n\n**Common payment methods:**\n• Credit/Debit Card\n• Bank Transfer\n• Mobile Money\n• Online Wallet\n\n**If your payment failed:**\n1. Check your card details\n2. Ensure sufficient funds\n3. Try again after a few moments\n4. Contact our support team if issues persist\n\n📞 Support: support@jagaban.com\n\nWhat's your specific issue?"
+        "keywords": ["payment issue", "payment", "billing", "pay", "2"],
+        "response": """💰 **Payment Issues**
+
+Kindly watch this video to avoid these issues again:
+👉 **https://youtube.com/shorts/a_4NUQ0Kn8I?si=qjzxu3k0hatxLTF**
+
+**How to get your reference:**
+1. Check your email for a message from Kora Pay
+2. Scroll down to find your reference
+3. Copy your reference
+4. Send it to our email: **Wisdom9f@gmail.com**
+
+We're here to help! 😊"""
     },
     "registration_issue": {
-        "keywords": ["register", "sign up", "account", "create account", "login", "password", "forgot", "reset"],
-        "response": "📝 **Account Registration Help**\n\n**Registration Steps:**\n1. Go to https://jagaban.com\n2. Click 'Sign Up'\n3. Enter your email address\n4. Create a strong password\n5. Verify your email\n6. Complete your profile\n\n**Common Issues:**\n• **Can't receive verification email?** Check spam folder or request new link\n• **Forgot password?** Click 'Forgot Password' on login page\n• **Already have account?** Use login instead of signup\n\n💡 Tip: Use a strong password with letters, numbers, and symbols\n\nNeed more help?"
+        "keywords": ["registration issue", "registration", "register", "account", "sign up", "3"],
+        "response": """📝 **Registration Issues**
+
+**Important Notes:**
+• Username must be only small letters (no capitals)
+• You can skip the ZIP code field
+
+📺 **Watch Tutorial:**
+👉 **https://youtu.be/jelkFB5KMRQ?si=UHCZsmnPgkfA_YY4**
+
+Follow the steps in the video and you'll be set up in no time! 🚀"""
     },
     "facebook_issue": {
-        "keywords": ["facebook", "fb", "social media", "share", "link facebook"],
-        "response": "📘 **Facebook Support**\n\n**Follow us on Facebook:**\n• Facebook Page: facebook.com/jagaban\n• Stay updated with latest news\n• Get exclusive offers\n• Connect with our community\n\n**Common Issues:**\n• Can't find our page? Search 'Jagaban SMS'\n• Account verification takes 24-48 hours\n• Check privacy settings if posts not visible\n\n**Share your feedback:**\nMessage us directly or leave a comment on our posts!\n\nAnything else about our Facebook?"
+        "keywords": ["facebook issue", "facebook", "fb", "4"],
+        "response": """📘 **Facebook Issues**
+
+📺 **Watch this video on how to rectify your issues:**
+👉 **https://youtu.be/Txad9v0aE5I?si=tp_-py0gnXuzn_aO**
+
+**Important Tips:**
+✅ Make sure you are using Chrome browser
+✅ Don't forget to turn ON your VPN
+
+Follow these steps and your issue will be resolved! 💯"""
     },
     "tiktok_issue": {
-        "keywords": ["tiktok", "tik tok", "tt", "viral", "video", "content"],
-        "response": "🎵 **TikTok Support**\n\n**Follow us on TikTok:**\n• TikTok: @jagaban_official\n• Watch our latest videos\n• Join our challenges\n• See behind-the-scenes content\n\n**Tips for TikTok:**\n• Turn on notifications for new videos\n• Share our content with friends\n• Participate in comments and challenges\n• Tag us in your videos!\n\n🎥 Make sure to follow us for daily updates!\n\nAny TikTok-related questions?"
+        "keywords": ["tiktok issue", "tiktok", "tik tok", "5"],
+        "response": """🎵 **TikTok Issues**
+
+**Login to your email here:**
+👉 **https://mail.rambler.ru/**
+
+From there, you can access and resolve your TikTok issues. Let us know if you need further assistance! 😊"""
     },
     "twitter_issue": {
-        "keywords": ["twitter", "x", "tweet", "retweet", "mention", "hashtag"],
-        "response": "🐦 **Twitter/X Support**\n\n**Follow us on Twitter:**\n• Twitter/X: @JabaganSMS\n• Real-time updates and news\n• Quick customer support responses\n• Live Q&A sessions\n\n**How to reach us:**\n• Reply to our tweets\n• Send direct messages\n• Use @JabaganSMS in your tweet\n• Follow our hashtag #JabaganCare\n\n📢 We respond to mentions quickly!\n\nWhat's your Twitter question?"
+        "keywords": ["twitter issue", "twitter", "tweet", "6"],
+        "response": """🐦 **Twitter Issues**
+
+📺 **Please watch this video to learn how to get 2FA code:**
+👉 **https://youtube.com/shorts/q9WarZ--KaM?si=wAA67uL1ofQMwhZH**
+
+Follow the steps and you'll resolve your Twitter issues! ✅"""
+    },
+    "buy_facebook": {
+        "keywords": ["buy facebook", "want to buy facebook", "purchase facebook", "7"],
+        "response": """📘 **Buy Facebook**
+
+Kindly use the site and register 👉 **https://jagabansmsandlogs.com.ng/products**
+
+You'll find all available Facebook packages there! 🎉"""
+    },
+    "buy_tiktok": {
+        "keywords": ["buy tiktok", "want to buy tiktok", "purchase tiktok", "8"],
+        "response": """🎵 **Buy TikTok**
+
+Kindly use the site and register 👉 **https://jagabansmsandlogs.com.ng/products**
+
+Choose from our TikTok packages and start today! 🚀"""
+    },
+    "buy_vpn": {
+        "keywords": ["buy vpn", "want to buy vpn", "purchase vpn", "vpn", "9"],
+        "response": """🔒 **Buy VPN**
+
+Please message us on **WhatsApp: 08101719615**
+
+Our team will assist you with VPN purchase options! 💬"""
+    },
+    "buy_instagram": {
+        "keywords": ["buy instagram", "want to buy instagram", "purchase instagram", "instagram", "10"],
+        "response": """📸 **Buy Instagram**
+
+Kindly use the site and register 👉 **https://jagabansmsandlogs.com.ng/products**
+
+Get your Instagram packages now! ✨"""
+    },
+    "buy_twitter": {
+        "keywords": ["buy twitter", "want to buy twitter", "purchase twitter", "11"],
+        "response": """🐦 **Buy Twitter**
+
+Kindly use the site and register 👉 **https://jagabansmsandlogs.com.ng/products**
+
+Start your Twitter journey with us today! 🚀"""
+    },
+    "buy_whatsapp": {
+        "keywords": ["buy whatsapp", "want to buy whatsapp", "purchase whatsapp", "whatsapp", "12"],
+        "response": """💬 **Buy WhatsApp**
+
+Please message us on **WhatsApp: 08101719615**
+
+Our team will help you get the perfect WhatsApp solution! 📱"""
+    },
+    "facebook_2fa_issue": {
+        "keywords": ["facebook 2fa", "2fa issue", "2fa", "facebook 2fa issue", "13"],
+        "response": """📘 **Facebook 2FA Issues**
+
+**To resolve your 2FA issue:**
+
+Kindly message us via email with the following:
+1. Screenshot of your logs
+2. Your 2FA key (copy it exactly)
+
+**Send to:** 📧 **Wisdom9f@gmail.com**
+
+We'll get back to you ASAP! ⚡"""
+    },
+    "support": {
+        "keywords": ["support", "14", "contact", "help us", "email"],
+        "response": """📞 **Support**
+
+Need help? Contact us!
+
+📧 **Email:** **Wisdom9f@gmail.com**
+
+Our support team is ready to assist you 24/7! 🎯"""
     },
     "general_help": {
-        "keywords": ["hello", "hi", "help", "support", "other", "general", "issue"],
-        "response": "👋 **Welcome to Jagaban SMS Support!**\n\nThank you for reaching out. How can we assist you?\n\n**Quick Links:**\n🌐 Website: https://jagaban.com\n💬 Email: support@jagaban.com\n📞 Phone: +1-800-JAGABAN (1-800-524-2226)\n\n**Popular Topics:**\n• 💳 Payment & Billing\n• 📝 Account Registration\n• 🌐 Website Help\n• 📘 Social Media\n• 🎵 TikTok\n• 🐦 Twitter\n\nOr describe your issue and we'll help!"
+        "keywords": ["other", "general", "issue"],
+        "response": """👋 **Welcome to Jagaban SMS!**
+
+How may I be of help?
+
+1️⃣ Site link
+2️⃣ Payment issue
+3️⃣ Registration issue
+4️⃣ Facebook issue
+5️⃣ TikTok issue
+6️⃣ Twitter issue
+7️⃣ Want to buy Facebook
+8️⃣ Want to buy TikTok
+9️⃣ Want to buy VPN
+🔟 Want to buy Instagram
+1️⃣1️⃣ Want to buy Twitter
+1️⃣2️⃣ Want to buy WhatsApp
+1️⃣3️⃣ Facebook 2FA issues
+1️⃣4️⃣ Support
+
+Just reply with the number or describe your issue!"""
     }
 }
 
