@@ -170,15 +170,33 @@ def main():
     # log all errors
     application.add_error_handler(error_handler)
     
+    # Check if running on Render or similar cloud platform
+    port = int(os.getenv("PORT", "8443"))
+    webhook_url = os.getenv("WEBHOOK_URL")
+    
     # Run the bot
     print("\n" + "="*60)
     print("  🤖 JAGABAN SMS TELEGRAM BOT STARTED")
     print("="*60)
-    print("\n✅ Bot is running and listening for messages...")
-    print("📱 Open Telegram and start chatting with your bot!")
-    print("\n⚠️  Press Ctrl+C to stop the bot\n")
     
-    application.run_polling()
+    if webhook_url:
+        # Production mode - use webhook
+        print(f"\n📡 Running in WEBHOOK mode on port {port}")
+        print(f"🔗 Webhook URL: {webhook_url}")
+        
+        application.run_webhook(
+            listen="0.0.0.0",
+            port=port,
+            url_path="/webhook",
+            webhook_url=webhook_url
+        )
+    else:
+        # Development mode - use polling
+        print("\n✅ Bot is running and listening for messages...")
+        print("📱 Open Telegram and start chatting with your bot!")
+        print("\n⚠️  Press Ctrl+C to stop the bot\n")
+        
+        application.run_polling()
 
 if __name__ == '__main__':
     main()
