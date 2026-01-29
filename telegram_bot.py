@@ -1,37 +1,3 @@
-"""
-Telegram Bot Integration for Jagaban SMS Customer Care Bot
-This module connects the FAQ database to Telegram
-"""
-
-import logging
-from telegram import Update
-from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
-from faq_database import get_response, is_exit_command, FAQ_DATA
-import json
-from datetime import datetime
-import os
-from dotenv import load_dotenv
-
-# Load environment variables
-load_dotenv()
-
-# Enable logging
-logging.basicConfig(
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-    level=logging.INFO
-)
-logger = logging.getLogger(__name__)
-
-# Store conversation logs
-conversation_logs = []
-
-class TelegramBotConfig:
-    """Configuration for Telegram Bot"""
-    # Get token from environment variable or use placeholder
-    TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "8535300318:AAH8QOFeo4xBpr6NBX1aqhsvzy4H2mBciII")
-    
-    @staticmethod
-    def validate_token():
 import logging
 from telegram import Update, ReplyKeyboardMarkup
 from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, ContextTypes, filters
@@ -119,15 +85,7 @@ def main():
 
 if __name__ == "__main__":
     main()
-                "3. Follow the instructions\n"
-                "4. Copy your bot token\n"
-                "5. Create a .env file in the project root\n"
-                "6. Add: TELEGRAM_BOT_TOKEN=your_token_here\n"
-            )
-
-def log_conversation(user_id, user_message, bot_response):
-    """Log conversation to file."""
-    log_entry = {
+...existing code...
         "timestamp": datetime.now().isoformat(),
         "user_id": user_id,
         "user_message": user_message,
