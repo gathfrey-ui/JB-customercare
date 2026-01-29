@@ -32,12 +32,93 @@ class TelegramBotConfig:
     
     @staticmethod
     def validate_token():
-        if TelegramBotConfig.TOKEN == "YOUR_TELEGRAM_BOT_TOKEN_HERE" or not TelegramBotConfig.TOKEN:
-            raise ValueError(
-                "❌ ERROR: No Telegram Bot Token provided!\n\n"
-                "To fix this:\n"
-                "1. Open Telegram and search for @BotFather\n"
-                "2. Send /newbot command\n"
+import logging
+from telegram import Update, ReplyKeyboardMarkup
+from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, ContextTypes, filters
+
+logging.basicConfig(
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    level=logging.INFO
+)
+
+WELCOME_MESSAGE = (
+    "Welcome to Jagaban SMS and Log! How may I be of help?\n"
+    "1: site link\n"
+    "2: payment issue\n"
+    "3: registration issue\n"
+    "4: facebook issue\n"
+    "5: TikTok issue\n"
+    "6: Twitter issue\n"
+    "7: want to buy Facebook\n"
+    "8: want to buy TikTok\n"
+    "9: want to buy VPN\n"
+    "10: want to buy instagram\n"
+    "11: want to buy twitter\n"
+    "12: want to buy WhatsApp\n"
+    "13: Facebook 2fa issues\n"
+    "14: support"
+)
+
+RESPONSES = {
+    "1": "Kindly use the site and register 👉https://jagabansmsandlogs.com.ng/products",
+    "2": (
+        "Kindly watch this video to avoid this issues again https://youtube.com/shorts/a_4NUQ0Kn8I?si=qjzxu3k0hatxLTF-\n"
+        "and learn how to avoid this problem but kindly provide your reference.\n"
+        "How to get your reference: kindly go to your email, you will see a message from kora pay, scroll down you will see your reference.\n"
+        "Kindly copy it and send it to our email Wisdom9f@gmail.com"
+    ),
+    "3": (
+        "Note that username must be only small letters and you can skip zip code.\n"
+        "Watch Tutorial on how to register https://youtu.be/jelkFB5KMRQ?si=UHCZsmnPgkfA_YY4"
+    ),
+    "4": (
+        "Kindly watch this video (https://youtu.be/Txad9v0aE5I?si=tp_-py0gnXuzn_aO)\n"
+        "on how to rectify your issues. Make sure you are using chrome and don’t forget to on VPN."
+    ),
+    "5": "Login the email here 👉https://mail.rambler.ru/",
+    "6": (
+        "Please watch this video and learn how to get 2fa code https://youtube.com/shorts/q9WarZ--KaM?si=wAA67uL1ofQMwhZH"
+    ),
+    "7": "Kindly use the site and register 👉https://jagabansmsandlogs.com.ng/products",
+    "8": "Kindly use the site and register 👉https://jagabansmsandlogs.com.ng/products",
+    "9": "Message us on WhatsApp 08101719615",
+    "10": "Kindly use the site and register 👉https://jagabansmsandlogs.com.ng/products",
+    "11": "Kindly use the site and register 👉https://jagabansmsandlogs.com.ng/products",
+    "12": "Kindly message us on WhatsApp 08101719615",
+    "13": (
+        "Kindly message us via email, send your screenshot of your logs and copy the 2fa key and send to our email Wisdom9f@gmail.com"
+    ),
+    "14": "Support: Wisdom9f@gmail.com"
+}
+
+REPLY_KEYBOARD = [[str(i)] for i in range(1, 15)]
+
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text(WELCOME_MESSAGE, reply_markup=ReplyKeyboardMarkup(REPLY_KEYBOARD, one_time_keyboard=True, resize_keyboard=True))
+
+async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    text = update.message.text.strip().lower()
+    if text == "hello":
+        await update.message.reply_text(WELCOME_MESSAGE, reply_markup=ReplyKeyboardMarkup(REPLY_KEYBOARD, one_time_keyboard=True, resize_keyboard=True))
+    elif text in RESPONSES:
+        await update.message.reply_text(RESPONSES[text])
+    else:
+        await update.message.reply_text("Please type 'hello' to start or choose an option (1-14) from the menu.")
+
+def main():
+    import os
+    TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
+    if not TOKEN:
+        print("Please set the TELEGRAM_BOT_TOKEN environment variable.")
+        return
+    app = ApplicationBuilder().token(TOKEN).build()
+    app.add_handler(CommandHandler("start", start))
+    app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
+    print("Bot is running...")
+    app.run_polling()
+
+if __name__ == "__main__":
+    main()
                 "3. Follow the instructions\n"
                 "4. Copy your bot token\n"
                 "5. Create a .env file in the project root\n"
@@ -170,33 +251,11 @@ def main():
     # log all errors
     application.add_error_handler(error_handler)
     
-    # Check if running on Render or similar cloud platform
-    port = int(os.getenv("PORT", "8443"))
-    webhook_url = os.getenv("WEBHOOK_URL")
-    
     # Run the bot
     print("\n" + "="*60)
     print("  🤖 JAGABAN SMS TELEGRAM BOT STARTED")
     print("="*60)
+    print("\n✅ Bot is running and listening for messages...")
+    print("📱 Open Telegram and start chatting with your bot!")
+    print("\n⚠️  Press Ctrl+C to stop the bot\n")
     
-    if webhook_url:
-        # Production mode - use webhook
-        print(f"\n📡 Running in WEBHOOK mode on port {port}")
-        print(f"🔗 Webhook URL: {webhook_url}")
-        
-        application.run_webhook(
-            listen="0.0.0.0",
-            port=port,
-            url_path="/webhook",
-            webhook_url=webhook_url
-        )
-    else:
-        # Development mode - use polling
-        print("\n✅ Bot is running and listening for messages...")
-        print("📱 Open Telegram and start chatting with your bot!")
-        print("\n⚠️  Press Ctrl+C to stop the bot\n")
-        
-        application.run_polling()
-
-if __name__ == '__main__':
-    main()
